@@ -32,10 +32,7 @@ class PK:
 
 
 def generate_keys(min: ZR) -> tuple[SK, PK]:
-    """Sample keys and verification parameters given the minimum domain value.
-
-    The min parameter seeds the MIN proof verification keys.
-    """
+    """Sample keys and verification parameters given the minimum domain value."""
     g1 = group.random(G1)
     g2 = group.random(G2)
     sk = group.random(ZR)
@@ -58,7 +55,7 @@ def generate_count_proof(
 ) -> tuple[G2, ZR]:
     """Prove COUNT over the set equals acc evaluated at 1.
 
-    Returns (proof, count_value=acc(1)).
+    Returns (proof, count_value=acc).
     """
     acc_1 = compute_accumulator(1, dataset)
     proof = g2 ** ((acc - acc_1) / (sk - 1))
@@ -79,7 +76,7 @@ def generate_sum_proof(
 ) -> tuple[G2, ZR, ZR]:
     """Prove SUM over the set by evaluating derivatives at 1.
 
-    Returns (proof_1, proof_2=acc(1), sum_value=acc'(1)).
+    Returns (proof_1, proof_2=acc, sum_value=acc').
     """
     acc_1 = compute_accumulator(1, dataset)
     acc_1d = sum([i * sk ** (i - 1) for i in dataset])

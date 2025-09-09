@@ -42,7 +42,7 @@ def decode_pair(z: int) -> list:
 
 
 class Aggregation(str, Enum):
-    """Supported aggregation types used by the ESA proofs and the demo pipeline."""
+    """Supported aggregation types used by the ESA proofs."""
     NONE = "none"
     COUNT = "count"
     SUM = "sum"
